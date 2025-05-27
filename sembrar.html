@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sembrar</title>
+    <style>
+        body {
+            background: rgb(238,174,202);
+            background: linear-gradient(to bottom, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);}
+            margin: 0;
+            overflow: hidden;
+          
+        }
+        #ascii-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .ascii-art {
+            position: absolute;
+            font-family: monospace;
+            white-space: pre;
+            font-size: 16px;
+            pointer-events: none; /* Evitar que los artes intercepten clics */
+            color: #255337; /* Color de los dibujos */
+        }
+      
+        button {
+            width: 150px;
+            height: 25px;
+            background-color: ButtonFace;           
+            color: black; /* Cambiar el color del texto del botón */
+            font-size: 10px; /* Cambiar el tamaño del texto del botón */
+            border: 2px outset lightgray;
+            text-align: center;            
+            padding: 10px 20px; /* Ajustar el relleno del botón */
+            line-height: 1px;
+
+}
+      
+        #button-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1; /* Asegurar que el botón esté por debajo de los artes */
+        }
+        button {
+            opacity: 1; /* Mantener la opacidad del botón en 1 */
+        }
+    </style>
+  <link rel="icon" href="https://cdn.glitch.global/f8f901fe-da65-45d5-9064-958ed8e15e15/esto%20es%20un%20jardi%CC%81n.png?v=1722951919169" type="image/png">
+
+  </head>
+<body>
+    <div id="button-container">
+        <button onclick="plantar()">sembrar en el jardín</button>
+    </div>
+    <div id="ascii-container"></div>
+
+    <script>
+        var plantHeightIncrement = 20000; // Incremento en la altura de cada planta
+
+        function plantar() {
+            var asciiArt = `
+                                                                                                                        
+                                                                                        @                                         
+                                                                                        @                                         
+                                                                                       @@                                         
+                                                    @@                                 @@                                         
+                                                    @@                                 @@                                         
+                                                    @@                                 @@                                         
+                                                    @@                                @@@                                         
+                                                     @@                               @@@                                         
+                                                     @@                               @@@                                         
+                                        @            @@                               @@   @                                      
+                                        @            @@                               @@   @                                      
+                                        @            @@                    @          @@@  @                                      
+                                        @            @@                   @          @@@   @       @                              
+                                        @            @@@                  @           @@@  @       @                              
+                                       @@@           @@@  @  @           @@      @   @@@@  @@ @    @                              
+                                       @@@           @@@  @  @          @@       @   @@@   @@ @    @                              
+                                    @  @@@           @@@  @  @          @@  @    @   @@@@  @@ @   @@                              
+                                    @  @@@           @ @  @  @     @   @@   @    @   @@@   @@ @   @@              @               
+                              @ @   @  @@@       @  @@@@ @@  @@    @  @@@   @@  @@   @@@@@ @@ @   @@         @    @               
+                          @   @ @   @  @@@       @  @@@@ @@  @@    @ @@ @   @@  @@   @@@   @@ @  @@          @    @               
+                          @   @ @  @@  @@@       @  @@@@ @    @   @  @  @   @@  @@   @@@ @ @@ @  @@@ @    @  @    @               
+                      @   @   @ @   @@ @@        @ @ @@ @@   @@   @ @ @@@ @ @@ @@@ @ @@@ @ @@ @  @@@ @    @  @    @               
+                      @   @  @@ @@@ @@ @@@ @     @ @ @@ @@@@ @    @@@ @@@ @ @@@@@@ @ @ @ @ @@ @@@@  @@    @  @   @@               
+                 @    @   @  @@ @ @@ @@@@  @     @ @ @@ @  @ @ @@@@  @@ @ @ @@@@@@ @ @ @ @ @@ @ @@@ @@    @  @   @@               
+                 @    @   @  @@ @   @@@@@ @@    @@@  @  @  @ @ @@@  @   @   @@@@@@ @@@ @ @ @@@@@ @@ @@    @ @@  @@                
+                 @    @ @ @@@@ @@@  @@@@@ @@@   @@@  @@@@ @    @ @  @@@@@@@  @@@ @@ @@ @ @ @@ @@ @@ @@    @  @@ @@                
+                 @ @  @  @@@@@ @@   @@@@  @ @  @@@@  @@ @  @@@@@@@ @@@@@ @@@ @@@ @@ @@  @@ @@@@@ @@@@@   @@@ @@ @@                
+                 @@ @@@@ @@@@@ @@   @@ @@   @@ @@@@@ @@   @@@ @@@@ @  @ @@@@@@@@ @@ @@  @ @   @  @ @@@   @@@ @ @@@                
+                 @@    @     @@@@   @ @@@@@ @@ @ @ @ @ @   @@ @@@@ @@   @   @@ @   @@@@ @@@ @@@ @@ @@@@  @@  @  @@                
+        @         @  @@ @@@@@  @@   @  @ @@  @ @@@@@ @@@@@ @  @@@  @@  @@ @ @@  @  @@@@ @@   @  @@ @@ @  @@  @  @@    @           
+         @    @   @@ @@@@  @@@ @@@@@@  @  @  @@@ @  @@@@   @ @  @  @@  @  @@@@@ @@ @ @@ @@@@ @ @@ @@@ @@ @  @@@ @@@   @           
+         @    @   @@ @@ @@   @@@ @ @@  @@ @ @@@    @@@ @   @ @@@  @ @ @@@ @   @  @@  @@ @@@@ @ @@@  @@@@ @@@@@@  @@   @           
+          @   @    @@@@  @@@  @ @  @@@ @@@  @@@@@@   @   @@  @@@  @  @@@@@@@ @ @ @@@ @@@   @  @@@@@    @ @@ @@ @  @   @       @   
+           @  @   @@@@@  @@    @@@@@ @  @@ @@@  @@@  @@@@@@ @@@@ @@@@@@@@@@@ @@@  @@  @@ @@@  @@@@@   @@@@  @@ @@@@  @      @     
+           @@ @@    @  @@@  @@@  @@@@@@ @  @   @@@@@  @@@@@ @@@  @@  @    @@  @@  @@@  @  @@@ @@@@@ @@@@@@@@@@@@@@@@ @    @@      
+            @@ @   @@ @@@@@@@@ @     @@   @@@@@@    @@ @@@  @@@ @@@  @ @@@@ @ @@  @@   @@ @@@  @@@ @@ @@ @@@@@@@  @ @@  @@        
+             @ @   @@@@@   @@@@@   @@ @@ @@@@ @@@@@ @@@     @@@ @ @  @@  @@@@  @ @@  @@ @ @@@  @  @ @@@@ @@@@@@  @@@@  @@         
+              @@@  @@@  @@@ @@ @@@  @ @  @  @  @@@@ @@@@@@ @@@  @@@ @@@@  @@@@   @ @@ @ @  @@    @@@@@@@  @@@@  @@@@  @           
+              @@@   @   @@  @@@@@@  @ @ @  @@@  @@@ @@   @ @@@  @@@ @@@@   @@@  @ @@@ @@@@ @@@  @@@@@@@@ @@@  @@@@@@ @            
+               @@    @@ @@  @ @@@@@ @@@@@ @@ @@   @@@@@@@@  @@  @@@ @@@@ @  @@ @@ @@  @@@@ @@@ @@@@@@@@@ @@  @@@@@@@@             
+               @@  @@@@ @@  @ @@@@@@ @@@ @@@ @@@@@@@@@ @@@@ @@  @@@ @@@@ @@  @  @ @@@ @@@@ @@  @@@@@@@@@ @@@@@ @@@@@@             
+               @ @@ @@@ @@  @ @@@@@@ @@@ @@@  @@@@@@@ @@@@@@ @ @@@@ @@@@ @@@  @@@ @@@@@@@@ @ @@@@@@@@@@@ @@@@@ @@@@@              
+               @@@ @@@@ @@  @ @@@@@@@@@@@@@@@@@@@@@@@ @@@@@ @@ @@@@@@@@@@@@@@@@@@ @@@@@@@@@@@ @@@@@@@@@@ @@@@@ @@@@@              
+               @@@@@@@@@@@  @@@@@@@@@@@@@@@@@@@@@@@@@ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @@@@@@                                                                                                                                             
+            `;
+
+            var asciiContainer = document.getElementById('ascii-container');
+            var asciiDiv = document.createElement('div');
+            asciiDiv.classList.add('ascii-art');
+            asciiDiv.innerHTML = asciiArt;
+
+            // Ajustar las posiciones de forma aleatoria, pero asegurarse de que el primer arte esté abajo
+            var leftPos = Math.floor(Math.random() * (window.innerWidth / 4)) - 500; // Calcula una posición aleatoria en la mitad izquierda de la pantalla
+            var rightPos = Math.floor(Math.random() * (window.innerWidth / 4)) + 500; // Calcula una posición aleatoria en la mitad derecha de la pantalla
+            
+            var topPos = Math.floor(Math.random() * (window.innerHeight - 400)); // Ajustar el margen para evitar desbordamientos
+
+            // Elige aleatoriamente entre la posición izquierda y derecha
+            if (Math.random() < 0.5) {
+                asciiDiv.style.left = leftPos + 'px';
+            } else {
+                asciiDiv.style.left = rightPos + 'px';
+            }
+            
+            asciiDiv.style.top = topPos + 'px';
+
+            asciiContainer.appendChild(asciiDiv);
+
+            // Aumentar la velocidad de subida para la siguiente planta
+            plantHeightIncrement += 10000; // Incremento en la altura de cada planta
+        }
+    </script>
+</body>
+</html>
